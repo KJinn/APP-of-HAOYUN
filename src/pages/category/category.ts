@@ -14,8 +14,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'category.html',
 })
 export class CategoryPage {
-  data:object;
-  data3:object;
+  data:{data:any[]};
+  data3:{data:any[]};
   number:number = 0;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {

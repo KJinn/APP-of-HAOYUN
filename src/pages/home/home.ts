@@ -32,7 +32,7 @@ export class HomePage {
 
   ionViewDidLoad() {
     // this.slides.slideTo(2, 500);
-    this.http.get('http://120.55.167.52/api/order/services').subscribe((data:object) => {
+    this.http.get('http://120.55.167.52/api/order/services').subscribe((data:{code:number,data:any[]}) => {
       this.indexData = data.data;
     },function (err) {
       console.log(err);
