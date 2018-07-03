@@ -1,14 +1,38 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      昊雲管家
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content>
+
+  <!--轮播-->
+  <ion-slides pager autoplay="3000" loop="true">
+    <ion-slide>
+      <img src="assets/imgs/index/banner1.jpg" width="100%">
+    </ion-slide>
+
+    <ion-slide>
+      <img src="assets/imgs/index/banner2.jpg" width="100%">
+    </ion-slide>
+
+    <ion-slide>
+      <img src="assets/imgs/index/banner3.jpg" width="100%">
+    </ion-slide>
+  </ion-slides>
+
+  <!--一级类目-->
+  <ion-list>
+    <ion-item *ngFor="let item of indexData" (click)="inCategory(item)">
+      <ion-thumbnail item-start>
+        <img [src]="item.img">
+      </ion-thumbnail>
+
+      <h2>{{item.name}}</h2>
+      <p></p>
+    </ion-item>
+  </ion-list>
+
 </ion-content>
