@@ -1,6 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
 import { NavController, Slides} from 'ionic-angular';
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -8,7 +7,6 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: 'home.html'
 })
 
-@Injectable()
 export class HomePage {
   indexData:any[];
   number:number = 0;

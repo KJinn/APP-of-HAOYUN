@@ -4,9 +4,11 @@ page-category {
   }
   .w30{
     width:30%;
+    height:100%;
   }
   .w70{
     width:70%;
+    height:100%;
   }
   .w100{
     width: 100%;
@@ -37,9 +39,18 @@ page-category {
     text-align: center;
     word-wrap:break-word;
     border-left:2px solid #fff;
+    border-bottom:1px solid #e5e5e5;
   }
   .two_list li.active{
     color: #fb870d;
     border-left:2px solid #fb870d;
+  }
+  .two_list{
+    border-right:1px solid #e5e5e5;
+
+  }
+  .two_list,.index_list{
+    height:100%;
+    overflow: auto;
   }
 }

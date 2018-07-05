@@ -23,6 +23,10 @@ export class CategoryPage {
     this.data3 = this.navParams.get('data').data[0];
   }
 
+  toPage(pageName){
+    this.navCtrl.push(pageName);
+  }
+
   switchData(i){
     this.number = i;
     this.data3 = this.data.data[this.number];

@@ -5,11 +5,9 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
   <ion-navbar>
     <ion-title>{{data.name}}</ion-title>
   </ion-navbar>
-
 </ion-header>
 
 
@@ -22,7 +20,7 @@
   <div class="w70 f-left">
     <ul class="index_list">
       <a *ngFor="let item of data3.data">
-        <li class="reset">
+        <li class="reset" (click)="toPage('AddAdsPage')">
           <!--<div class="left text-center"><img [src]=item.img width="60%"/></div>-->
           <div class="right" style="width: 100%">
             <p class="f16 m-10_0">{{item.name}} - {{item.price}}({{item.unit}})</p>
