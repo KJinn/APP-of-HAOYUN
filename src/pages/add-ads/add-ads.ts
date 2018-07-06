@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
-import { InAppBrowser } from '@ionic-native/in-app-browser';
-import { MapFile } from  '/src/pages/add-ads/insertJS.js'
+import { Geolocation } from '@ionic-native/geolocation';
+import { ToastController } from 'ionic-angular';
+
 
 /**
  * Generated class for the AddAdsPage page.
@@ -17,20 +18,49 @@ import { MapFile } from  '/src/pages/add-ads/insertJS.js'
   templateUrl: 'add-ads.html',
 })
 export class AddAdsPage {
+  geo: string = '';
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               private http: HttpClient,
-              private iab: InAppBrowser) {
+              private geolocation: Geolocation,
+              public toastCtrl: ToastController) {
   }
 
+
+
   openMap() {
-    // window.location.href('https://m.amap.com/picker/?key=c4031ebacc93e6512ce8677fcff70935');
-    const browser = this.iab.create('https://m.amap.com/picker/?key=c4031ebacc93e6512ce8677fcff70935');
-    browser.executeScript({
-      file: '/src/pages/add-ads/insertJS.js'
+    //key= fdd2fc12bed22729f957bbb28eaf631a
+    this.geolocation.getCurrentPosition().then((resp) => {
+      // resp.coords.longitude  经度
+      // resp.coords.latitude   纬度
+      this.http.get('http://restapi.amap.com/v3/geocode/regeo',{
+        params:{
+          key:'fdd2fc12bed22729f957bbb28eaf631a',
+          location:resp.coords.longitude + ',' + resp.coords.latitude
+        }
+      }).subscribe((data:any) => {
+        if(data.status == 1){
+          this.geo = data.regeocode.formatted_address;
+        }else{
+          const toast = this.toastCtrl.create({
+            message: '获取地理位置失败！',
+            duration: 3000
+          });
+          toast.present();
+        }
+      },function (err) {
+        console.log(err);
+      });
+
+    }).catch((error) => {
+      console.log('Error getting location', error);
     });
 
+  }
+
+  complete(){
+    this.navCtrl.pop();
   }
 
   ionViewDidLoad() {

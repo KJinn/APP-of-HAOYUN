@@ -34,25 +34,28 @@
 
   <ion-list>
     <ion-item>
-      <ion-label fixed>联系人</ion-label>
-      <ion-input placeholder="姓名"></ion-input>
+      <ion-label floating><span class="hong">*</span> 联系人</ion-label>
+      <ion-input></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label fixed>电话</ion-label>
-      <ion-input placeholder="电话号码"></ion-input>
+      <ion-label floating><span class="hong">*</span> 电话</ion-label>
+      <ion-input></ion-input>
     </ion-item>
 
     <ion-item (click)="openMap()">
-      <ion-label fixed>所在区域</ion-label>
-      <ion-input placeholder="所在省市区"></ion-input>
+      <ion-label floating><span class="hong">*</span> 所在区域(点击自动获取)</ion-label>
+      <ion-input [(ngModel)]="geo"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label fixed>详细地址</ion-label>
-      <ion-input placeholder="请输入地址"></ion-input>
+      <ion-label floating>详细地址</ion-label>
+      <ion-input></ion-input>
     </ion-item>
-
   </ion-list>
+
+  <div padding>
+    <button ion-button block (click)="complete()">完成</button>
+  </div>
 
 </ion-content>
